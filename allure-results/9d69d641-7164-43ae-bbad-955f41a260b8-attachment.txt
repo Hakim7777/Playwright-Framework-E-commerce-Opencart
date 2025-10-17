@@ -1,0 +1,4 @@
+Current URL after removal: http://localhost/opencart/index.php?route=checkout/cart
+Has 'empty' text: false
+MacBook removed: false
+Has '0 item': false

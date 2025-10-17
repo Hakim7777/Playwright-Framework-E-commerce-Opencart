@@ -1,0 +1,14 @@
+[
+  {
+    "testName": "Invalid login with non-existent credentials",
+    "email": "pavanol@abc.com",
+    "password": "test@123",
+    "expected": "failure"
+  },
+  {
+    "testName": "Invalid login",
+    "email": "abcxyz@xyz.com",
+    "password": "abcxyx",
+    "expected": "failure"
+  }
+]

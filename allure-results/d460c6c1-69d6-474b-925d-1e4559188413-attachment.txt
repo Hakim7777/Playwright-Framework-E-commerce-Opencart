@@ -1,0 +1,6 @@
+Error selecting product: Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('h4>a').nth(1)
+    - waiting for" http://localhost/opencart/index.php?route=product/search&search=iPhone" navigation to finish...
+    - navigated to "http://localhost/opencart/index.php?route=product/search&search=iPhone"
+

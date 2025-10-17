@@ -1,0 +1,15 @@
+Attempting to click My Account...
+My Account clicked successfully
+Attempting to click Register...
+Register clicked successfully
+Attempting to click My Account...
+My Account clicked successfully
+Attempting to click Login...
+Exception occurred while clicking 'Login': Error: locator.waitFor: Error: strict mode violation: locator('a[href*="account/login"]:has-text("Login")') resolved to 2 elements:
+    1) <a href="http://localhost/opencart/index.php?route=account/login">Login</a> aka locator('#top-links').getByRole('link', { name: 'Login' })
+    2) <a class="list-group-item" href="http://localhost/opencart/index.php?route=account/login">Login</a> aka locator('#column-right').getByRole('link', { name: 'Login' })
+
+Call log:
+  - waiting for locator('a[href*="account/login"]:has-text("Login")') to be visible
+
+Alternative Login click succeeded

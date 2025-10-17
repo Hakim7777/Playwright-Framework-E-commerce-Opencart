@@ -1,0 +1,291 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - button "$ Currency " [ref=e7] [cursor=pointer]:
+        - strong [ref=e8]: $
+        - text: Currency
+        - generic [ref=e9]: 
+      - list [ref=e11]:
+        - listitem [ref=e12]:
+          - link "" [ref=e13] [cursor=pointer]:
+            - /url: http://localhost/opencart/index.php?route=information/contact
+            - generic [ref=e14]: 
+          - text: "123456789"
+        - listitem [ref=e15]:
+          - link " My Account" [ref=e16] [cursor=pointer]:
+            - /url: http://localhost/opencart/index.php?route=account/account
+            - generic [ref=e17]: 
+            - text: My Account
+        - listitem [ref=e19]:
+          - link " Wish List (0)" [ref=e20] [cursor=pointer]:
+            - /url: http://localhost/opencart/index.php?route=account/wishlist
+            - generic [ref=e21]: 
+            - text: Wish List (0)
+        - listitem [ref=e22]:
+          - link " Shopping Cart" [ref=e23] [cursor=pointer]:
+            - /url: http://localhost/opencart/index.php?route=checkout/cart
+            - generic [ref=e24]: 
+            - text: Shopping Cart
+        - listitem [ref=e25]:
+          - link " Checkout" [ref=e26] [cursor=pointer]:
+            - /url: http://localhost/opencart/index.php?route=checkout/checkout
+            - generic [ref=e27]: 
+            - text: Checkout
+  - banner [ref=e28]:
+    - generic [ref=e30]:
+      - link "Your Store" [ref=e33] [cursor=pointer]:
+        - /url: http://localhost/opencart/index.php?route=common/home
+        - img "Your Store" [ref=e34]
+      - generic [ref=e36]:
+        - textbox "Search" [ref=e37]: MacBook
+        - button "" [ref=e39] [cursor=pointer]:
+          - generic [ref=e40]: 
+      - generic [ref=e42]:
+        - button " 1 item(s) - $602.00" [expanded] [active] [ref=e43] [cursor=pointer]:
+          - generic [ref=e44]:
+            - generic [ref=e45]: 
+            - text: 1 item(s) - $602.00
+        - list [ref=e46]:
+          - listitem [ref=e47]:
+            - table [ref=e48]:
+              - rowgroup [ref=e49]:
+                - row "MacBook MacBook x 1 $602.00 " [ref=e50]:
+                  - cell "MacBook" [ref=e51]:
+                    - link "MacBook" [ref=e52] [cursor=pointer]:
+                      - /url: http://localhost/opencart/index.php?route=product/product&product_id=43
+                      - img "MacBook" [ref=e53]
+                  - cell "MacBook" [ref=e54]:
+                    - link "MacBook" [ref=e55] [cursor=pointer]:
+                      - /url: http://localhost/opencart/index.php?route=product/product&product_id=43
+                  - cell "x 1" [ref=e56]
+                  - cell "$602.00" [ref=e57]
+                  - cell "" [ref=e58]:
+                    - button "" [ref=e59] [cursor=pointer]:
+                      - generic [ref=e60]: 
+          - listitem [ref=e61]:
+            - generic [ref=e62]:
+              - table [ref=e63]:
+                - rowgroup [ref=e64]:
+                  - row "Sub-Total $500.00" [ref=e65]:
+                    - cell "Sub-Total" [ref=e66]:
+                      - strong [ref=e67]: Sub-Total
+                    - cell "$500.00" [ref=e68]
+                  - row "Eco Tax (-2.00) $2.00" [ref=e69]:
+                    - cell "Eco Tax (-2.00)" [ref=e70]:
+                      - strong [ref=e71]: Eco Tax (-2.00)
+                    - cell "$2.00" [ref=e72]
+                  - row "VAT (20%) $100.00" [ref=e73]:
+                    - cell "VAT (20%)" [ref=e74]:
+                      - strong [ref=e75]: VAT (20%)
+                    - cell "$100.00" [ref=e76]
+                  - row "Total $602.00" [ref=e77]:
+                    - cell "Total" [ref=e78]:
+                      - strong [ref=e79]: Total
+                    - cell "$602.00" [ref=e80]
+              - paragraph [ref=e81]:
+                - link " View Cart" [ref=e82] [cursor=pointer]:
+                  - /url: http://localhost/opencart/index.php?route=checkout/cart
+                  - strong [ref=e83]:
+                    - generic [ref=e84]: 
+                    - text: View Cart
+                - link " Checkout" [ref=e85] [cursor=pointer]:
+                  - /url: http://localhost/opencart/index.php?route=checkout/checkout
+                  - strong [ref=e86]:
+                    - generic [ref=e87]: 
+                    - text: Checkout
+  - navigation [ref=e89]:
+    - generic: 
+    - list [ref=e91]:
+      - listitem [ref=e92]:
+        - link "Desktops" [ref=e93] [cursor=pointer]:
+          - /url: http://localhost/opencart/index.php?route=product/category&path=20
+      - listitem [ref=e94]:
+        - link "Laptops & Notebooks" [ref=e95] [cursor=pointer]:
+          - /url: http://localhost/opencart/index.php?route=product/category&path=18
+      - listitem [ref=e96]:
+        - link "Components" [ref=e97] [cursor=pointer]:
+          - /url: http://localhost/opencart/index.php?route=product/category&path=25
+      - listitem [ref=e98]:
+        - link "Tablets" [ref=e99] [cursor=pointer]:
+          - /url: http://localhost/opencart/index.php?route=product/category&path=57
+      - listitem [ref=e100]:
+        - link "Software" [ref=e101] [cursor=pointer]:
+          - /url: http://localhost/opencart/index.php?route=product/category&path=17
+      - listitem [ref=e102]:
+        - link "Phones & PDAs" [ref=e103] [cursor=pointer]:
+          - /url: http://localhost/opencart/index.php?route=product/category&path=24
+      - listitem [ref=e104]:
+        - link "Cameras" [ref=e105] [cursor=pointer]:
+          - /url: http://localhost/opencart/index.php?route=product/category&path=33
+      - listitem [ref=e106]:
+        - link "MP3 Players" [ref=e107] [cursor=pointer]:
+          - /url: http://localhost/opencart/index.php?route=product/category&path=34
+  - generic [ref=e108]:
+    - list [ref=e109]:
+      - listitem [ref=e110]:
+        - link "" [ref=e111] [cursor=pointer]:
+          - /url: http://localhost/opencart/index.php?route=common/home
+          - generic [ref=e112]: 
+      - listitem [ref=e113]:
+        - link "Search" [ref=e114] [cursor=pointer]:
+          - /url: http://localhost/opencart/index.php?route=product/search&search=MacBook
+      - listitem [ref=e115]:
+        - link "MacBook" [ref=e116] [cursor=pointer]:
+          - /url: http://localhost/opencart/index.php?route=product/product&search=MacBook&product_id=43
+    - generic [ref=e117]:
+      - text: "Success: You have added"
+      - link "MacBook" [ref=e118] [cursor=pointer]:
+        - /url: http://localhost/opencart/index.php?route=product/product&product_id=43
+      - text: to your
+      - link "shopping cart" [ref=e119] [cursor=pointer]:
+        - /url: http://localhost/opencart/index.php?route=checkout/cart
+      - text: "!"
+      - button "×" [ref=e120] [cursor=pointer]
+    - generic [ref=e123]:
+      - generic [ref=e124]:
+        - list [ref=e125]:
+          - listitem [ref=e126]:
+            - link "MacBook" [ref=e127] [cursor=pointer]:
+              - /url: http://localhost/opencart/image/cache/catalog/demo/macbook_1-500x500.jpg
+              - img "MacBook" [ref=e128]
+          - listitem [ref=e129]:
+            - link "MacBook" [ref=e130] [cursor=pointer]:
+              - /url: http://localhost/opencart/image/cache/catalog/demo/macbook_5-500x500.jpg
+              - img "MacBook" [ref=e131]
+          - listitem [ref=e132]:
+            - link "MacBook" [ref=e133] [cursor=pointer]:
+              - /url: http://localhost/opencart/image/cache/catalog/demo/macbook_4-500x500.jpg
+              - img "MacBook" [ref=e134]
+          - listitem [ref=e135]:
+            - link "MacBook" [ref=e136] [cursor=pointer]:
+              - /url: http://localhost/opencart/image/cache/catalog/demo/macbook_2-500x500.jpg
+              - img "MacBook" [ref=e137]
+          - listitem [ref=e138]:
+            - link "MacBook" [ref=e139] [cursor=pointer]:
+              - /url: http://localhost/opencart/image/cache/catalog/demo/macbook_3-500x500.jpg
+              - img "MacBook" [ref=e140]
+        - list [ref=e141]:
+          - listitem [ref=e142]:
+            - link "Description" [ref=e143]:
+              - /url: "#tab-description"
+          - listitem [ref=e144]:
+            - link "Specification" [ref=e145] [cursor=pointer]:
+              - /url: "#tab-specification"
+          - listitem [ref=e146]:
+            - link "Reviews (0)" [ref=e147] [cursor=pointer]:
+              - /url: "#tab-review"
+        - generic [ref=e148]:
+          - generic [ref=e150]:
+            - paragraph [ref=e151]: Intel Core 2 Duo processor
+            - paragraph [ref=e152]: Powered by an Intel Core 2 Duo processor at speeds up to 2.16GHz, the new MacBook is the fastest ever.
+            - paragraph [ref=e153]: 1GB memory, larger hard drives
+            - paragraph [ref=e154]: The new MacBook now comes with 1GB of memory standard and larger hard drives for the entire line perfect for running more of your favorite applications and storing growing media collections.
+            - paragraph [ref=e155]: Sleek, 1.08-inch-thin design
+            - paragraph [ref=e156]: MacBook makes it easy to hit the road thanks to its tough polycarbonate case, built-in wireless technologies, and innovative MagSafe Power Adapter that releases automatically if someone accidentally trips on the cord.
+            - paragraph [ref=e157]: Built-in iSight camera
+            - paragraph [ref=e158]: Right out of the box, you can have a video chat with friends or family,2 record a video at your desk, or take fun pictures with Photo Booth
+          - text: "* * *"
+      - generic [ref=e159]:
+        - generic [ref=e160]:
+          - button "" [ref=e161] [cursor=pointer]:
+            - generic [ref=e162]: 
+          - button "" [ref=e163] [cursor=pointer]:
+            - generic [ref=e164]: 
+        - heading "MacBook" [level=1] [ref=e165]
+        - list [ref=e166]:
+          - listitem [ref=e167]:
+            - text: "Brand:"
+            - link "Apple" [ref=e168] [cursor=pointer]:
+              - /url: http://localhost/opencart/index.php?route=product/manufacturer/info&manufacturer_id=8
+          - listitem [ref=e169]: "Product Code: Product 16"
+          - listitem [ref=e170]: "Reward Points: 600"
+          - listitem [ref=e171]: "Availability: In Stock"
+        - list [ref=e172]:
+          - listitem [ref=e173]:
+            - heading "$602.00" [level=2] [ref=e174]
+          - listitem [ref=e175]: "Ex Tax: $500.00"
+        - generic [ref=e177]:
+          - generic [ref=e178]: Qty
+          - textbox "Qty" [ref=e179]: "1"
+          - button "Add to Cart" [ref=e180] [cursor=pointer]
+        - paragraph [ref=e182]:
+          - generic [ref=e184]: 
+          - generic [ref=e186]: 
+          - generic [ref=e188]: 
+          - generic [ref=e190]: 
+          - generic [ref=e192]: 
+          - link "0 reviews" [ref=e193] [cursor=pointer]:
+            - /url: ""
+          - text: /
+          - link "Write a review" [ref=e194] [cursor=pointer]:
+            - /url: ""
+  - contentinfo [ref=e195]:
+    - generic [ref=e196]:
+      - generic [ref=e197]:
+        - generic [ref=e198]:
+          - heading "Information" [level=5] [ref=e199]
+          - list [ref=e200]:
+            - listitem [ref=e201]:
+              - link "About Us" [ref=e202] [cursor=pointer]:
+                - /url: http://localhost/opencart/index.php?route=information/information&information_id=4
+            - listitem [ref=e203]:
+              - link "Delivery Information" [ref=e204] [cursor=pointer]:
+                - /url: http://localhost/opencart/index.php?route=information/information&information_id=6
+            - listitem [ref=e205]:
+              - link "Privacy Policy" [ref=e206] [cursor=pointer]:
+                - /url: http://localhost/opencart/index.php?route=information/information&information_id=3
+            - listitem [ref=e207]:
+              - link "Terms & Conditions" [ref=e208] [cursor=pointer]:
+                - /url: http://localhost/opencart/index.php?route=information/information&information_id=5
+        - generic [ref=e209]:
+          - heading "Customer Service" [level=5] [ref=e210]
+          - list [ref=e211]:
+            - listitem [ref=e212]:
+              - link "Contact Us" [ref=e213] [cursor=pointer]:
+                - /url: http://localhost/opencart/index.php?route=information/contact
+            - listitem [ref=e214]:
+              - link "Returns" [ref=e215] [cursor=pointer]:
+                - /url: http://localhost/opencart/index.php?route=account/return/add
+            - listitem [ref=e216]:
+              - link "Site Map" [ref=e217] [cursor=pointer]:
+                - /url: http://localhost/opencart/index.php?route=information/sitemap
+        - generic [ref=e218]:
+          - heading "Extras" [level=5] [ref=e219]
+          - list [ref=e220]:
+            - listitem [ref=e221]:
+              - link "Brands" [ref=e222] [cursor=pointer]:
+                - /url: http://localhost/opencart/index.php?route=product/manufacturer
+            - listitem [ref=e223]:
+              - link "Gift Certificates" [ref=e224] [cursor=pointer]:
+                - /url: http://localhost/opencart/index.php?route=account/voucher
+            - listitem [ref=e225]:
+              - link "Affiliate" [ref=e226] [cursor=pointer]:
+                - /url: http://localhost/opencart/index.php?route=affiliate/login
+            - listitem [ref=e227]:
+              - link "Specials" [ref=e228] [cursor=pointer]:
+                - /url: http://localhost/opencart/index.php?route=product/special
+        - generic [ref=e229]:
+          - heading "My Account" [level=5] [ref=e230]
+          - list [ref=e231]:
+            - listitem [ref=e232]:
+              - link "My Account" [ref=e233] [cursor=pointer]:
+                - /url: http://localhost/opencart/index.php?route=account/account
+            - listitem [ref=e234]:
+              - link "Order History" [ref=e235] [cursor=pointer]:
+                - /url: http://localhost/opencart/index.php?route=account/order
+            - listitem [ref=e236]:
+              - link "Wish List" [ref=e237] [cursor=pointer]:
+                - /url: http://localhost/opencart/index.php?route=account/wishlist
+            - listitem [ref=e238]:
+              - link "Newsletter" [ref=e239] [cursor=pointer]:
+                - /url: http://localhost/opencart/index.php?route=account/newsletter
+      - separator [ref=e240]
+      - paragraph [ref=e241]:
+        - text: Powered By
+        - link "OpenCart" [ref=e242] [cursor=pointer]:
+          - /url: http://www.opencart.com
+        - text: Your Store © 2025
+```

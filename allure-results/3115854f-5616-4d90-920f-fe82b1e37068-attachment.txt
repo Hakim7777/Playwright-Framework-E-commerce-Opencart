@@ -1,0 +1,7 @@
+Exception occurred while clicking 'Login': Error: locator.click: Error: strict mode violation: locator('a:has-text("Login")') resolved to 2 elements:
+    1) <a href="http://localhost/opencart/index.php?route=account/login">Login</a> aka locator('#top-links').getByRole('link', { name: 'Login' })
+    2) <a class="list-group-item" href="http://localhost/opencart/index.php?route=account/login">Login</a> aka locator('#column-right').getByRole('link', { name: 'Login' })
+
+Call log:
+  - waiting for locator('a:has-text("Login")')
+

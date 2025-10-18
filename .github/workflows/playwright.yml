@@ -43,41 +43,44 @@ jobs:
       run: |
         # Create docker-compose.yml for OpenCart
         cat > docker-compose.yml << 'EOF'
-        version: '3.8'
         services:
-          mariadb:
-            image: mariadb:10.6
+          mysql:
+            image: mysql:8.0
             environment:
               MYSQL_ROOT_PASSWORD: root
               MYSQL_DATABASE: opencart
               MYSQL_USER: opencart
               MYSQL_PASSWORD: opencart
             healthcheck:
-              test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+              test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
               interval: 5s
               timeout: 3s
-              retries: 10
+              retries: 20
+            volumes:
+              - mysql-data:/var/lib/mysql
           
           opencart:
-            image: bitnami/opencart:latest
+            image: opencart/opencart:latest
             ports:
-              - "80:8080"
+              - "80:80"
             environment:
-              OPENCART_DATABASE_HOST: mariadb
-              OPENCART_DATABASE_PORT_NUMBER: 3306
-              OPENCART_DATABASE_USER: opencart
-              OPENCART_DATABASE_PASSWORD: opencart
-              OPENCART_DATABASE_NAME: opencart
-              OPENCART_HOST: localhost
-              OPENCART_SKIP_BOOTSTRAP: no
+              DB_HOSTNAME: mysql
+              DB_USERNAME: opencart
+              DB_PASSWORD: opencart
+              DB_DATABASE: opencart
+              DB_PORT: 3306
+              DB_PREFIX: oc_
             depends_on:
-              mariadb:
+              mysql:
                 condition: service_healthy
             healthcheck:
-              test: ["CMD", "curl", "-f", "http://localhost:8080"]
+              test: ["CMD", "curl", "-f", "http://localhost/"]
               interval: 10s
               timeout: 5s
               retries: 30
+        
+        volumes:
+          mysql-data:
         EOF
         
         # Start containers (use 'docker compose' without dash for newer versions)

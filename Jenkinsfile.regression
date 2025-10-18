@@ -1,0 +1,108 @@
+/**
+ * Jenkins Pipeline for Full Regression Tests
+ * Author: SAHRAOUI Abdelhakim
+ * Email: Hakimsahraoui.de@gmail.com
+ * Runs: ALL tests (Sanity + Regression + End-to-End)
+ */
+
+pipeline {
+    agent any
+    
+    tools {
+        nodejs 'NodeJS'
+    }
+    
+    environment {
+        CI = 'true'
+    }
+    
+    parameters {
+        choice(
+            name: 'BROWSER',
+            choices: ['chromium', 'firefox', 'webkit', 'msedge'],
+            description: 'Select browser for test execution'
+        )
+        choice(
+            name: 'TEST_SUITE',
+            choices: ['sanity', 'regression', 'all'],
+            description: 'Select test suite to run'
+        )
+    }
+    
+    stages {
+        stage('📥 Checkout') {
+            steps {
+                echo "🔄 Cloning repository..."
+                git branch: 'main',
+                    url: 'https://github.com/Hakim7777/Playwright-Typescript-Ecommerce-Framework-Opencart.git'
+            }
+        }
+        
+        stage('📦 Setup') {
+            steps {
+                echo "📦 Installing dependencies..."
+                bat 'npm ci'
+                bat "npx playwright install ${params.BROWSER}"
+            }
+        }
+        
+        stage('🧪 Execute Tests') {
+            steps {
+                script {
+                    echo "🧪 Running ${params.TEST_SUITE} tests on ${params.BROWSER}..."
+                    
+                    if (params.TEST_SUITE == 'sanity') {
+                        bat "npx playwright test --grep @sanity --project=${params.BROWSER}"
+                    } else if (params.TEST_SUITE == 'regression') {
+                        bat "npx playwright test --grep @regression --project=${params.BROWSER}"
+                    } else {
+                        bat "npx playwright test --project=${params.BROWSER}"
+                    }
+                }
+            }
+        }
+        
+        stage('📊 Generate Reports') {
+            steps {
+                echo "📊 Generating Allure report..."
+                bat 'npm run allure:generate'
+            }
+        }
+    }
+    
+    post {
+        always {
+            // Publish reports
+            publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'playwright-report',
+                reportFiles: 'index.html',
+                reportName: "🎭 Playwright Report - ${params.BROWSER}",
+                reportTitles: "Test Report - ${params.TEST_SUITE}"
+            ])
+            
+            allure([
+                includeProperties: false,
+                jdk: '',
+                properties: [],
+                reportBuildPolicy: 'ALWAYS',
+                results: [[path: 'allure-results']]
+            ])
+            
+            // Archive artifacts
+            archiveArtifacts artifacts: 'allure-report/**/*', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'playwright-report/**/*', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'test-results/**/*', allowEmptyArchive: true
+        }
+        
+        success {
+            echo "✅ ${params.TEST_SUITE} tests passed on ${params.BROWSER}! 🎉"
+        }
+        
+        failure {
+            echo "❌ ${params.TEST_SUITE} tests failed on ${params.BROWSER}!"
+        }
+    }
+}

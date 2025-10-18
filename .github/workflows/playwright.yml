@@ -45,7 +45,7 @@ jobs:
         cat > docker-compose.yml << 'EOF'
         services:
           mysql:
-            image: mysql:8.0
+            image: mysql:5.7
             environment:
               MYSQL_ROOT_PASSWORD: root
               MYSQL_DATABASE: opencart
@@ -60,7 +60,7 @@ jobs:
               - mysql-data:/var/lib/mysql
           
           opencart:
-            image: opencart/opencart:latest
+            image: jonbaldie/opencart:latest
             ports:
               - "80:80"
             environment:
@@ -74,16 +74,17 @@ jobs:
               mysql:
                 condition: service_healthy
             healthcheck:
-              test: ["CMD", "curl", "-f", "http://localhost/"]
+              test: ["CMD-SHELL", "curl -f http://localhost/ || exit 1"]
               interval: 10s
               timeout: 5s
               retries: 30
+              start_period: 30s
         
         volumes:
           mysql-data:
         EOF
         
-        # Start containers (use 'docker compose' without dash for newer versions)
+        # Start containers
         docker compose up -d
         
         # Wait for OpenCart to be fully ready

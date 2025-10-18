@@ -38,6 +38,56 @@ jobs:
     - name: 📦 Install Dependencies
       run: npm ci
     
+    # Start OpenCart with Docker Compose
+    - name: 🐳 Start OpenCart Container
+      run: |
+        # Create docker-compose.yml for OpenCart
+        cat > docker-compose.yml << 'EOF'
+        version: '3.8'
+        services:
+          mariadb:
+            image: mariadb:10.6
+            environment:
+              MYSQL_ROOT_PASSWORD: root
+              MYSQL_DATABASE: opencart
+              MYSQL_USER: opencart
+              MYSQL_PASSWORD: opencart
+            healthcheck:
+              test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+              interval: 5s
+              timeout: 3s
+              retries: 10
+          
+          opencart:
+            image: bitnami/opencart:latest
+            ports:
+              - "80:8080"
+            environment:
+              OPENCART_DATABASE_HOST: mariadb
+              OPENCART_DATABASE_PORT_NUMBER: 3306
+              OPENCART_DATABASE_USER: opencart
+              OPENCART_DATABASE_PASSWORD: opencart
+              OPENCART_DATABASE_NAME: opencart
+              OPENCART_HOST: localhost
+              OPENCART_SKIP_BOOTSTRAP: no
+            depends_on:
+              mariadb:
+                condition: service_healthy
+            healthcheck:
+              test: ["CMD", "curl", "-f", "http://localhost:8080"]
+              interval: 10s
+              timeout: 5s
+              retries: 30
+        EOF
+        
+        # Start containers
+        docker-compose up -d
+        
+        # Wait for OpenCart to be fully ready
+        echo "⏳ Waiting for OpenCart to be ready..."
+        timeout 300 bash -c 'until curl -sf http://localhost:80 > /dev/null; do echo "Waiting..."; sleep 5; done'
+        echo "✅ OpenCart is ready!"
+    
     # Install Playwright browsers
     - name: 🎭 Install Playwright Browsers
       run: npx playwright install --with-deps ${{ matrix.browser }}

@@ -17,6 +17,7 @@ export default defineConfig({
   ],
 
   use: {
+    // OpenCart runs on localhost (local dev) or Docker container (CI)
     baseURL: 'http://localhost/opencart/',
     trace: 'on',
     screenshot: 'on',

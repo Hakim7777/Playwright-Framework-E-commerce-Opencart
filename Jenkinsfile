@@ -126,45 +126,43 @@ pipeline {
             archiveArtifacts artifacts: 'allure-report/**/*', allowEmptyArchive: true
             archiveArtifacts artifacts: 'test-results/**/*', allowEmptyArchive: true
             
-            // Add Allure report link to build page
-            script {
-                try {
-                    // Create HTML file that links to Allure report
-                    writeFile file: 'build-report-link.html', text: '''
-                        <!DOCTYPE html>
-                        <html>
-                        <head>
-                            <meta charset="UTF-8">
-                            <title>Test Reports</title>
-                            <style>
-                                body { font-family: Arial, sans-serif; margin: 20px; }
-                                .report-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
-                                .report-link { display: inline-block; margin: 10px 0; padding: 10px 15px; background: #007bff; color: white; text-decoration: none; border-radius: 3px; }
-                                .report-link:hover { background: #0056b3; }
-                                .report-title { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
-                            </style>
-                        </head>
-                        <body>
-                            <h1>📊 Test Reports Dashboard</h1>
-                            
-                            <div class="report-section">
-                                <div class="report-title">✨ Allure Report</div>
-                                <p>Click below to view detailed Allure test report with analytics:</p>
-                                <a href="artifact/allure-report/index.html" class="report-link">🔗 View Allure Report</a>
-                            </div>
-                            
-                            <div class="report-section">
-                                <div class="report-title">🎭 Playwright Report</div>
-                                <p>Click below to view detailed Playwright test results with traces:</p>
-                                <a href="artifact/playwright-report/index.html" class="report-link">🔗 View Playwright Report</a>
-                            </div>
-                        </body>
-                        </html>
-                    '''
-                } catch (Exception e) {
-                    echo "Warning: Could not generate report link: ${e.message}"
-                }
-            }
+            // Create simple HTML dashboard for reports
+            bat '''
+                @echo off
+                (
+                    echo ^<!DOCTYPE html^>
+                    echo ^<html^>
+                    echo ^<head^>
+                    echo ^<meta charset="UTF-8"^>
+                    echo ^<title^>Test Reports Dashboard^</title^>
+                    echo ^<style^>
+                    echo body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+                    echo .container { max-width: 800px; margin: 0 auto; }
+                    echo .report-section { margin: 20px 0; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba^(0,0,0,0.1^); }
+                    echo .report-title { font-size: 20px; font-weight: bold; margin-bottom: 15px; color: #333; }
+                    echo .report-link { display: inline-block; margin: 10px 0; padding: 12px 24px; background: #007bff; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; }
+                    echo .report-link:hover { background: #0056b3; }
+                    echo h1 { color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+                    echo ^</style^>
+                    echo ^</head^>
+                    echo ^<body^>
+                    echo ^<div class="container"^>
+                    echo ^<h1^>📊 Test Reports Dashboard^</h1^>
+                    echo ^<div class="report-section"^>
+                    echo ^<div class="report-title"^>✨ Allure Report^</div^>
+                    echo ^<p^>View detailed Allure test report with analytics and statistics^</p^>
+                    echo ^<a href="artifact/allure-report/index.html" class="report-link" target="_blank"^>🔗 View Allure Report^</a^>
+                    echo ^</div^>
+                    echo ^<div class="report-section"^>
+                    echo ^<div class="report-title"^>🎭 Playwright Report^</div^>
+                    echo ^<p^>View detailed Playwright test results with traces and videos^</p^>
+                    echo ^<a href="artifact/playwright-report/index.html" class="report-link" target="_blank"^>🔗 View Playwright Report^</a^>
+                    echo ^</div^>
+                    echo ^</div^>
+                    echo ^</body^>
+                    echo ^</html^>
+                ) > build-report-link.html
+            '''
             
             // Archive the report link HTML
             archiveArtifacts artifacts: 'build-report-link.html', allowEmptyArchive: true

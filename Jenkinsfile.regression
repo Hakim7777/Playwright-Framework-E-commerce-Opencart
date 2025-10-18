@@ -8,9 +8,8 @@
 pipeline {
     agent any
     
-    tools {
-        nodejs 'NodeJS'
-    }
+    // NOTE: Si NodeJS plugin n'est pas installé, le Node.js du système sera utilisé
+    // Pour installer le plugin NodeJS: Manage Jenkins → Manage Plugins → Search "NodeJS"
     
     environment {
         CI = 'true'
@@ -30,6 +29,14 @@ pipeline {
     }
     
     stages {
+        stage('✅ Verify Node.js') {
+            steps {
+                echo '🔍 Checking Node.js installation...'
+                bat 'node --version'
+                bat 'npm --version'
+            }
+        }
+        
         stage('📥 Checkout') {
             steps {
                 echo "🔄 Cloning repository..."

@@ -20,7 +20,7 @@ import { LoginPage } from '../Pages/LoginPage';
 import { MyAccountPage } from '../Pages/MyAccountPage';
 import { LogoutPage } from '../Pages/LogoutPage';
 import { RegistrationPage } from '../Pages/RegistrationPage';
-import { RandomDataUtil } from '../utils/randomDataGenerator';
+import { RandomDataUtil } from '../Utils/randomDataGenerator';
 
 // Declare shared variables
 let config: TestConfig;

@@ -14,7 +14,7 @@ import { test, expect } from '@playwright/test';
 import { HomePage } from '../Pages/HomePage';
 import { LoginPage } from '../Pages/LoginPage';
 import { MyAccountPage } from '../Pages/MyAccountPage';
-import { RandomDataUtil } from '../utils/randomDataGenerator';
+import { RandomDataUtil } from '../Utils/randomDataGenerator';
 import { TestConfig } from '../test.config';
 
 let config: TestConfig;

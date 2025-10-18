@@ -16,7 +16,7 @@
 import { test, expect, Page } from '@playwright/test';
 import { RegistrationPage } from '../Pages/RegistrationPage';
 import { HomePage } from '../Pages/HomePage';
-import { RandomDataUtil } from '../utils/randomDataGenerator';
+import { RandomDataUtil } from '../Utils/randomDataGenerator';
 import { TestConfig } from '../test.config';
 import { LogoutPage } from '../Pages/LogoutPage';
 import { LoginPage } from '../Pages/LoginPage';

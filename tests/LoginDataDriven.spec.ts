@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../Pages/LoginPage';
 import { MyAccountPage } from '../Pages/MyAccountPage';
-import { DataProvider } from '../utils/dataProvider';
+import { DataProvider } from '../Utils/dataProvider';
 import { TestConfig } from '../test.config';
 import { HomePage } from '../Pages/HomePage';
 

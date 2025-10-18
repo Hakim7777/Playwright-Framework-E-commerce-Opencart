@@ -80,8 +80,8 @@ jobs:
               retries: 30
         EOF
         
-        # Start containers
-        docker-compose up -d
+        # Start containers (use 'docker compose' without dash for newer versions)
+        docker compose up -d
         
         # Wait for OpenCart to be fully ready
         echo "⏳ Waiting for OpenCart to be ready..."

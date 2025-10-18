@@ -1,6 +1,15 @@
 # Playwright E2E Test Automation for OpenCart
 # Author: SAHRAOUI Abdelhakim
 # Framework: Playwright + TypeScript + Page Object Model
+#
+# ⚠️ CI/CD TEMPORARILY DISABLED ⚠️
+# Reason: No publicly available OpenCart Docker image exists
+# OpenCart requires local installation on localhost:80
+# 
+# To enable CI/CD, you need to:
+# 1. Deploy OpenCart to a public URL (Heroku, AWS, Azure, etc.)
+# 2. Update baseURL in playwright.config.ts
+# 3. Remove the "if: false" condition below
 
 name: 🎭 Playwright E2E Tests
 
@@ -15,7 +24,8 @@ jobs:
   test:
     name: Run Playwright Tests
     timeout-minutes: 60
-    runs-on: ubuntu-latest  # Faster and more cost-effective than Windows
+    runs-on: ubuntu-latest
+    if: false  # 🛑 DISABLED - Enable when OpenCart is deployed publicly
     
     strategy:
       fail-fast: false  # Continue running other jobs even if one fails

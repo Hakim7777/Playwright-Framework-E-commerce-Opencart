@@ -122,20 +122,6 @@ pipeline {
             echo 'Publishing reports and artifacts...'
             
             script {
-                if (fileExists('playwright-report/index.html')) {
-                    publishHTML([
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: true,
-                        keepAll: true,
-                        reportDir: 'playwright-report',
-                        reportFiles: 'index.html',
-                        reportName: "Playwright Report - ${params.TEST_SUITE}",
-                        reportTitles: "Playwright Test Report"
-                    ])
-                }
-            }
-            
-            script {
                 if (fileExists('allure-results')) {
                     allure([
                         includeProperties: false,

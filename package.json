@@ -9,7 +9,8 @@
     "test:datadriven": "playwright test --grep @datadriven",
     "test:master:headed": "playwright test --grep @master --headed",
     "test:end-to-end": "playwright test --grep @end-to-end --headed",
-    "test:sanity:debug": "playwright test --grep @sanity --debug"
+    "test:sanity:debug": "playwright test --grep @sanity --debug",
+    "allure:generate": "allure generate allure-results -o allure-report --clean"
   },
   "keywords": [],
   "author": "",

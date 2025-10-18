@@ -121,19 +121,64 @@ pipeline {
         always {
             echo 'Publishing reports and artifacts...'
             
+            // Archive artifacts for historical records
             archiveArtifacts artifacts: 'playwright-report/**/*', allowEmptyArchive: true
             archiveArtifacts artifacts: 'allure-report/**/*', allowEmptyArchive: true
             archiveArtifacts artifacts: 'test-results/**/*', allowEmptyArchive: true
+            
+            // Add Allure report link to build page
+            script {
+                try {
+                    // Create HTML file that links to Allure report
+                    writeFile file: 'build-report-link.html', text: '''
+                        <!DOCTYPE html>
+                        <html>
+                        <head>
+                            <meta charset="UTF-8">
+                            <title>Test Reports</title>
+                            <style>
+                                body { font-family: Arial, sans-serif; margin: 20px; }
+                                .report-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+                                .report-link { display: inline-block; margin: 10px 0; padding: 10px 15px; background: #007bff; color: white; text-decoration: none; border-radius: 3px; }
+                                .report-link:hover { background: #0056b3; }
+                                .report-title { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+                            </style>
+                        </head>
+                        <body>
+                            <h1>📊 Test Reports Dashboard</h1>
+                            
+                            <div class="report-section">
+                                <div class="report-title">✨ Allure Report</div>
+                                <p>Click below to view detailed Allure test report with analytics:</p>
+                                <a href="artifact/allure-report/index.html" class="report-link">🔗 View Allure Report</a>
+                            </div>
+                            
+                            <div class="report-section">
+                                <div class="report-title">🎭 Playwright Report</div>
+                                <p>Click below to view detailed Playwright test results with traces:</p>
+                                <a href="artifact/playwright-report/index.html" class="report-link">🔗 View Playwright Report</a>
+                            </div>
+                        </body>
+                        </html>
+                    '''
+                } catch (Exception e) {
+                    echo "Warning: Could not generate report link: ${e.message}"
+                }
+            }
+            
+            // Archive the report link HTML
+            archiveArtifacts artifacts: 'build-report-link.html', allowEmptyArchive: true
             
             echo 'Reports and artifacts archived successfully!'
         }
         
         success {
-            echo "Pipeline completed successfully! ${params.TEST_SUITE} tests passed!"
+            echo "✅ Pipeline completed successfully! ${params.TEST_SUITE} tests passed!"
+            echo "📊 Reports available in: Artifacts → allure-report/index.html"
         }
         
         failure {
-            echo "Pipeline failed! Check logs above."
+            echo "❌ Pipeline failed! Check logs above."
         }
     }
 }

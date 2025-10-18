@@ -121,18 +121,6 @@ pipeline {
         always {
             echo 'Publishing reports and artifacts...'
             
-            script {
-                if (fileExists('allure-results')) {
-                    allure([
-                        includeProperties: false,
-                        jdk: '',
-                        properties: [],
-                        reportBuildPolicy: 'ALWAYS',
-                        results: [[path: 'allure-results']]
-                    ])
-                }
-            }
-            
             archiveArtifacts artifacts: 'playwright-report/**/*', allowEmptyArchive: true
             archiveArtifacts artifacts: 'allure-report/**/*', allowEmptyArchive: true
             archiveArtifacts artifacts: 'test-results/**/*', allowEmptyArchive: true
